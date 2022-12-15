@@ -9,7 +9,7 @@ final GetIt _getIt = GetIt.instance;
 
 @injectableInit
 void configureDependencies({String? environment}) =>
-    $initGetIt(_getIt, environment: environment);
+    _getIt.init(environment: environment);
 
 T resolve<T extends Object>() => _getIt<T>();
 

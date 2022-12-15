@@ -1,4 +1,3 @@
-import 'package:app_ui/src/colors.dart';
 import 'package:app_ui/src/typography/typography.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,7 +7,6 @@ class ShiftPlannerTextStyle {
   static const _baseTextStyle = TextStyle(
     package: 'app_ui',
     fontFamily: 'OpenSans',
-    color: ShiftPlannerColors.black,
     fontWeight: ShiftPlannerFontWeight.regular,
   );
 

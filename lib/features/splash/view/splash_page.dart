@@ -24,7 +24,9 @@ class _SplashPageState extends ConsumerState<SplashPage> {
     super.initState();
 
     FlutterNativeSplash.remove();
-    ref.read(splashProvider.bloc).onCheckForUser();
+    Future<void>.delayed(const Duration(seconds: 1)).then((value) {
+      ref.read(splashProvider.bloc).onCheckForUser();
+    });
   }
 
   @override

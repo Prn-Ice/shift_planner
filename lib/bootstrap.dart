@@ -39,11 +39,11 @@ Future<void> bootstrap(
   // initialize firebase
   await firebaseInitializer?.call();
 
-  // Keep splash open
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-
   // setup GetIt
   configureDependencies(environment: environment);
+
+  // Keep splash open
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   // Prevent rotating screen
   await SystemChrome.setPreferredOrientations([

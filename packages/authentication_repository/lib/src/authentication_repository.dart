@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:authentication_repository/src/local_data_source/authentication_local_data_source.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;

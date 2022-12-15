@@ -37,7 +37,9 @@ class App extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        theme: ShiftPlannerTheme.standard,
+        theme: ShiftPlannerTheme.theme(),
+        darkTheme: ShiftPlannerTheme.theme(isDark: true),
+        themeMode: ThemeMode.light,
         builder: (context, widget) {
           /// Prevent app from scaling with device font
           return MediaQuery(

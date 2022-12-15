@@ -55,7 +55,8 @@ class TaskRepository implements ITaskRepository {
         }
 
         final userId = _authenticationRepository.currentUser.id;
-        final newTasks = [...current.tasks ?? [], task];
+        // ignore: omit_local_variable_types
+        final List<NurseTask> newTasks = [...current.tasks ?? [], task];
         final request = NurseTasks(tasks: newTasks);
 
         await _tasksRef.doc(userId).set(request);
