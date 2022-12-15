@@ -34,7 +34,7 @@ class CodegenLoader extends AssetLoader{
   "login": {
     "welcome": "Welcome back",
     "login": "Login",
-    "loginInstead": "Register instead"
+    "registerInstead": "Register instead"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};

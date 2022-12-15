@@ -16,6 +16,6 @@
   "login": {
     "welcome": "Welcome back",
     "login": "Login",
-    "loginInstead": "Register instead"
+    "registerInstead": "Register instead"
   }
 }

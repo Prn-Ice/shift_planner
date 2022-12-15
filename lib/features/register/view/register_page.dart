@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:app_ui/app_ui.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:formz/formz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -52,7 +53,7 @@ class RegisterPage extends ConsumerWidget {
                 const _RegisterButton(),
                 24.verticalSpace,
                 OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () => context.replaceRoute(const LoginRoute()),
                   child: Text(LocaleKeys.register_loginInstead.tr()),
                 ),
                 128.verticalSpace,

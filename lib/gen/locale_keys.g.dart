@@ -14,7 +14,7 @@ abstract class  LocaleKeys {
   static const register = 'register';
   static const login_welcome = 'login.welcome';
   static const login_login = 'login.login';
-  static const login_loginInstead = 'login.loginInstead';
+  static const login_registerInstead = 'login.registerInstead';
   static const login = 'login';
 
 }
