@@ -19,8 +19,6 @@ import 'package:bloc_logger/bloc_logger.dart';
 import 'package:crashlytics_service/crashlytics_service.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
-import 'package:feedback/feedback.dart';
-import 'package:flutter_libphonenumber/flutter_libphonenumber.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:injectable/injectable.dart';
@@ -50,9 +48,6 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder, {
 
   // initialize localization
   await EasyLocalization.ensureInitialized();
-
-  // setup libphonenumber
-  await FlutterLibphonenumber().init();
 
   // setup logger
   final blocLogger = getLogger('BLOC', usePrettyPrinter: true);
@@ -108,7 +103,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder, {
             crashlyticsService: crashlyticsService,
           ),
         ],
-        child: BetterFeedback(child: await builder()),
+        child: await builder(),
       ),
     ),
   );

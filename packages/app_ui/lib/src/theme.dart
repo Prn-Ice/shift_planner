@@ -153,7 +153,8 @@ class ShiftPlannerTheme {
   static ElevatedButtonThemeData get _elevatedButtonTheme {
     return ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        elevation: 0, backgroundColor: ShiftPlannerColors.primary,
+        elevation: 0,
+        backgroundColor: ShiftPlannerColors.primary,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(30)),
         ),
@@ -165,8 +166,11 @@ class ShiftPlannerTheme {
   static OutlinedButtonThemeData get _outlinedButtonTheme {
     return OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        foregroundColor: ShiftPlannerColors.white, shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
+        foregroundColor: ShiftPlannerColors.white,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(30),
+          ),
         ),
         side: const BorderSide(color: ShiftPlannerColors.white, width: 2),
         fixedSize: const Size(208, 54),

@@ -7,8 +7,7 @@ import 'package:injectable/injectable.dart';
 import 'package:shift_planner/app/router/router.dart';
 
 @module
-// ignore: prefer-match-file-name
-abstract class InjectableModule {
+abstract class GeneralModule {
   @lazySingleton
   AppRouter get router => AppRouter();
 
