@@ -31,6 +31,8 @@ dependencies:
   riverpod_logger:
 
   # repository
+  authentication_repository:
+  task_repository:
 
   # services
   crashlytics_service:

@@ -1,0 +1,7 @@
+{
+  "create_task_request": {
+    "title": "title",
+    "dueDate.!toDateTime": "",
+    "shift": "morning"
+  }
+}

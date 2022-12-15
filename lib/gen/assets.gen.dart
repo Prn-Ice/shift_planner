@@ -10,6 +10,20 @@
 // Flutter imports:
 import 'package:flutter/widgets.dart';
 
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/splash.png
+  AssetGenImage get splash => const AssetGenImage('assets/images/splash.png');
+
+  /// File path: assets/images/splash_small.png
+  AssetGenImage get splashSmall =>
+      const AssetGenImage('assets/images/splash_small.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [splash, splashSmall];
+}
+
 class $AssetsTranslationsGen {
   const $AssetsTranslationsGen();
 
@@ -23,6 +37,7 @@ class $AssetsTranslationsGen {
 class Assets {
   Assets._();
 
+  static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 }
 

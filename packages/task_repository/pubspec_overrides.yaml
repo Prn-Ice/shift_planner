@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: authentication_repository,hive_repository
+dependency_overrides:
+  authentication_repository:
+    path: ../authentication_repository
+  hive_repository:
+    path: ../hive_repository

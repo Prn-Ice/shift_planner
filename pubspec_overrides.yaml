@@ -1,7 +1,9 @@
-# melos_managed_dependency_overrides: auto_route_observer,bloc_logger,app_ui,crashlytics_service,flitaa_extensions,hive_service,riverpod_logger
+# melos_managed_dependency_overrides: auto_route_observer,bloc_logger,app_ui,crashlytics_service,flitaa_extensions,hive_service,riverpod_logger,authentication_repository,hive_repository,task_repository
 dependency_overrides:
   app_ui:
     path: packages/app_ui
+  authentication_repository:
+    path: packages/authentication_repository
   auto_route_observer:
     path: packages/auto_route_observer
   bloc_logger:
@@ -10,7 +12,11 @@ dependency_overrides:
     path: packages/crashlytics_service
   flitaa_extensions:
     path: packages/flitaa_extensions
+  hive_repository:
+    path: packages/hive_repository
   hive_service:
     path: packages/hive_service
   riverpod_logger:
     path: packages/riverpod_logger
+  task_repository:
+    path: packages/task_repository

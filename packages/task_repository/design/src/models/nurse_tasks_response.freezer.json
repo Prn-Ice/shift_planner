@@ -1,0 +1,17 @@
+{
+  "models": {
+    "nurse_tasks": {
+      "tasks.!as:nurse_task": [
+        {
+          "title": "title",
+          "isComplete": true,
+          "dueDate.!toDateTime": "",
+          "shift": "morning"
+        }
+      ]
+    }
+  },
+  "enums": {
+    "shift": ["morning", "evening", "night"]
+  }
+}
