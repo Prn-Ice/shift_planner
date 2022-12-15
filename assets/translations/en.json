@@ -2,6 +2,7 @@
   "email": "Email",
   "password": "Password",
   "date": "Date",
+  "time": "Time",
   "counter": {
     "appBarTitle": "Counter"
   },
@@ -22,7 +23,6 @@
     "all": "All",
     "completed": "Completed",
     "title": "Title",
-    "date": "Date",
     "shift": "Shift",
     "addTask": "Add Task",
     "addTaskSuccess": "Task added successfully"

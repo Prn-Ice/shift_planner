@@ -34,6 +34,8 @@ class NewTaskBottomSheet extends ConsumerWidget {
             16.verticalSpace,
             const _DateInput(),
             16.verticalSpace,
+            const _TimeInput(),
+            16.verticalSpace,
             const _ShiftInput(),
             48.verticalSpace,
             const _AddButton(),
@@ -99,8 +101,31 @@ class _DateInput extends ConsumerWidget {
 
     return DateInput(
       errorText: date.errorText,
-      onChanged: (value) =>
-          ref.read(newTaskProvider.bloc).onDateChanged(value.toIso8601String()),
+      // ignore: prefer-extracting-callbacks
+      onChanged: (value) {
+        ref.read(newTaskProvider.bloc).onDateChanged(value.toIso8601String());
+        FocusScope.of(context).nextFocus();
+      },
+    );
+  }
+}
+
+class _TimeInput extends ConsumerWidget {
+  const _TimeInput();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final date = ref.watch(
+      newTaskProvider.select((value) => value.date),
+    );
+
+    return TimeInput(
+      errorText: date.errorText,
+      // ignore: prefer-extracting-callbacks
+      onChanged: (value) {
+        ref.read(newTaskProvider.bloc).onDateChanged(value.toIso8601String);
+        FocusScope.of(context).nextFocus();
+      },
     );
   }
 }

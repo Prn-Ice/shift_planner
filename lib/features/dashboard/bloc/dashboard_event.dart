@@ -10,3 +10,7 @@ abstract class DashboardEvent extends Equatable {
 class DashboardFetchUser extends DashboardEvent {
   const DashboardFetchUser();
 }
+
+class DashboardFetchTasks extends DashboardEvent {
+  const DashboardFetchTasks();
+}

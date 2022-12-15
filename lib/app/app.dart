@@ -5,6 +5,7 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
+export 'extensions/extensions.dart';
 export 'injection/injection.dart';
 export 'models/models.dart';
 export 'router/router.dart';

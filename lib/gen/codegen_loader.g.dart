@@ -20,6 +20,7 @@ class CodegenLoader extends AssetLoader{
   "email": "Email",
   "password": "Password",
   "date": "Date",
+  "time": "Time",
   "counter": {
     "appBarTitle": "Counter"
   },
@@ -40,7 +41,6 @@ class CodegenLoader extends AssetLoader{
     "all": "All",
     "completed": "Completed",
     "title": "Title",
-    "date": "Date",
     "shift": "Shift",
     "addTask": "Add Task",
     "addTaskSuccess": "Task added successfully"

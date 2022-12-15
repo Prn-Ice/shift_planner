@@ -5,6 +5,7 @@ class NewTaskState extends Equatable {
     this.title = const GeneralInput.pure(),
     this.shift = const GeneralInput.pure(),
     this.date = const GeneralInput.pure(),
+    this.time = const GeneralInput.pure(),
     this.status = FormzStatus.pure,
     this.error = '',
   });
@@ -12,16 +13,18 @@ class NewTaskState extends Equatable {
   final GeneralInput title;
   final GeneralInput shift;
   final GeneralInput date;
+  final GeneralInput time;
   final FormzStatus status;
   final String error;
 
   @override
-  List<Object> get props => [title, shift, date, status, error];
+  List<Object> get props => [title, shift, date, time, status, error];
 
   NewTaskState copyWith({
     GeneralInput? title,
     GeneralInput? shift,
     GeneralInput? date,
+    GeneralInput? time,
     FormzStatus? status,
     String? error,
   }) {
@@ -29,6 +32,7 @@ class NewTaskState extends Equatable {
       title: title ?? this.title,
       shift: shift ?? this.shift,
       date: date ?? this.date,
+      time: time ?? this.time,
       status: status ?? this.status,
       error: error ?? this.error,
     );

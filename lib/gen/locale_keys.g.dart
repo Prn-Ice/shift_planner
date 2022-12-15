@@ -4,6 +4,7 @@ abstract class  LocaleKeys {
   static const email = 'email';
   static const password = 'password';
   static const date = 'date';
+  static const time = 'time';
   static const counter_appBarTitle = 'counter.appBarTitle';
   static const counter = 'counter';
   static const appName = 'appName';
@@ -20,7 +21,6 @@ abstract class  LocaleKeys {
   static const dashboard_all = 'dashboard.all';
   static const dashboard_completed = 'dashboard.completed';
   static const dashboard_title = 'dashboard.title';
-  static const dashboard_date = 'dashboard.date';
   static const dashboard_shift = 'dashboard.shift';
   static const dashboard_addTask = 'dashboard.addTask';
   static const dashboard_addTaskSuccess = 'dashboard.addTaskSuccess';

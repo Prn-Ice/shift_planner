@@ -22,30 +22,47 @@ class NewTaskCubit extends Cubit<NewTaskState> {
 
   void onTitleChanged(String value) {
     final title = GeneralInput.dirty(value);
-    final status = Formz.validate([title, state.date, state.shift]);
+    final status = Formz.validate([title, state.date, state.time, state.shift]);
 
     emit(state.copyWith(title: title, status: status));
   }
 
   void onDateChanged(String value) {
     final date = GeneralInput.dirty(value);
-    final status = Formz.validate([state.title, date, state.shift]);
+    final status = Formz.validate([state.title, date, state.time, state.shift]);
 
     emit(state.copyWith(date: date, status: status));
   }
 
+  void onTimeChanged(String value) {
+    final time = GeneralInput.dirty(value);
+    final status = Formz.validate([state.title, state.date, time, state.shift]);
+
+    emit(state.copyWith(time: time, status: status));
+  }
+
   void onShiftChanged(String value) {
     final shift = GeneralInput.dirty(value);
-    final status = Formz.validate([state.title, state.date, shift]);
+    final status = Formz.validate([state.title, state.date, state.time, shift]);
 
     emit(state.copyWith(shift: shift, status: status));
   }
 
   Future<void> onCreateTask() async {
+    final date = DateTime.parse(state.date.value);
+    final time = DateTime.parse(state.time.value);
+    final dateTime = DateTime(
+      date.year,
+      date.month,
+      date.day,
+      time.hour,
+      time.month,
+    );
+
     final request = NurseTask(
       title: state.title.value,
       isComplete: false,
-      dueDate: DateTime.parse(state.date.value),
+      dueDate: dateTime,
       shift: Shift.values.firstWhere(
         (element) => element.name == state.shift.value,
       ),

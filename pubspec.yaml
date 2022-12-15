@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_screenutil: ^5.6.0
-  flutter_svg: ^1.1.6
+  flutter_sticky_header: ^0.6.5
 
   # analytics
   dart_code_metrics: ^4.17.1
@@ -50,6 +50,7 @@ dependencies:
   riverbloc: ^2.0.0
 
   # utils
+  collection: ^1.16.0
   easy_localization: ^3.0.1
   easy_logger: ^0.0.2
   equatable: ^2.0.5

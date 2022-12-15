@@ -7,8 +7,8 @@ import 'package:easy_localization/easy_localization.dart';
 // Project imports:
 import 'package:shift_planner/gen/gen.dart';
 
-class DateInput extends StatefulWidget {
-  const DateInput({
+class TimeInput extends StatefulWidget {
+  const TimeInput({
     super.key,
     this.errorText,
     this.initial,
@@ -16,15 +16,15 @@ class DateInput extends StatefulWidget {
   });
 
   final String? errorText;
-  final DateTime? initial;
-  final ValueChanged<DateTime> onChanged;
+  final TimeOfDay? initial;
+  final ValueChanged<TimeOfDay> onChanged;
 
   @override
-  State<DateInput> createState() => _DateInputState();
+  State<TimeInput> createState() => _DateInputState();
 }
 
-class _DateInputState extends State<DateInput> {
-  DateTime? date;
+class _DateInputState extends State<TimeInput> {
+  TimeOfDay? time;
   bool isFocused = false;
   late FocusNode focusNode;
 
@@ -38,7 +38,7 @@ class _DateInputState extends State<DateInput> {
   void initState() {
     super.initState();
 
-    date = widget.initial;
+    time = widget.initial;
     focusNode = FocusNode();
     focusNode.addListener(_focusListener);
   }
@@ -63,7 +63,7 @@ class _DateInputState extends State<DateInput> {
         child: Focus(
           focusNode: focusNode,
           child: Text(
-            date == null ? LocaleKeys.date.tr() : _formatDate,
+            time == null ? LocaleKeys.time.tr() : _formatDate,
             style: _getStyle,
           ),
         ),
@@ -75,7 +75,7 @@ class _DateInputState extends State<DateInput> {
     final base = Theme.of(context).textTheme.subtitle1;
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    if (date == null) {
+    if (time == null) {
       return base?.copyWith(
         color: isDark ? Colors.white60 : Colors.black.withOpacity(0.6),
       );
@@ -85,26 +85,22 @@ class _DateInputState extends State<DateInput> {
   }
 
   Future<void> _onSelectDate() async {
-    final now = DateTime.now();
+    final now = TimeOfDay.now();
 
-    final value = await showDatePicker(
+    final value = await showTimePicker(
       context: context,
-      initialDate: widget.initial ?? now,
-      firstDate: now,
-      lastDate: now.add(const Duration(days: 30)),
+      initialTime: widget.initial ?? now,
     );
 
     setState(() {
-      date = value ?? now;
+      time = value ?? now;
       widget.onChanged(value ?? now);
     });
   }
 
   String get _formatDate {
-    final format = DateFormat('EEE, MMM d, ' 'yy');
-
     try {
-      return format.format(date!);
+      return time!.format(context);
     } catch (e) {
       return 'Date';
     }
