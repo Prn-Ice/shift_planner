@@ -25,6 +25,16 @@ class CodegenLoader extends AssetLoader{
   "splash": {
     "appName": "Shift Planner",
     "by": "Powered By"
+  },
+  "register": {
+    "welcome": "Welcome to Shift Planner",
+    "register": "Register",
+    "loginInstead": "Login instead"
+  },
+  "login": {
+    "welcome": "Welcome back",
+    "login": "Login",
+    "loginInstead": "Register instead"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};

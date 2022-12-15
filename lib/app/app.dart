@@ -6,6 +6,7 @@
 // https://opensource.org/licenses/MIT.
 
 export 'injection/injection.dart';
+export 'models/models.dart';
 export 'router/router.dart';
 export 'utils/utils.dart';
 export 'view/app.dart';

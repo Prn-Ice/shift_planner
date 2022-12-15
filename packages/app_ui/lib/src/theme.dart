@@ -13,7 +13,9 @@ class ShiftPlannerTheme {
     return base.copyWith(
       elevatedButtonTheme: _elevatedButtonTheme,
       outlinedButtonTheme: _outlinedButtonTheme,
-      textTheme: _textTheme,
+      textTheme: _textTheme.apply(
+        bodyColor: isDark ? Colors.white : Colors.black,
+      ),
       dialogTheme: _dialogTheme,
       bottomSheetTheme: _bottomSheetTheme,
     );

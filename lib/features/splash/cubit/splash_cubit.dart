@@ -5,30 +5,35 @@ import 'package:equatable/equatable.dart';
 import 'package:riverbloc/riverbloc.dart';
 
 // Project imports:
-import 'package:shift_planner/app/injection/injection.dart';
+import 'package:shift_planner/app/app.dart';
 
 part 'splash_state.dart';
 
 class SplashCubit extends Cubit<SplashState> {
-  SplashCubit(this._authenticationRepository) : super(SplashInitial());
+  SplashCubit(
+    this._authenticationRepository,
+    this._router,
+  ) : super(SplashInitial());
 
   final AuthenticationRepository _authenticationRepository;
+  final AppRouter _router;
 
   void onCheckForUser() {
     final user = _authenticationRepository.currentUser;
 
     if (user == User.empty) {
-      // navigate to register
+      _router.replace(const RegisterRoute());
     } else {
-      // go home
+      _router.replace(const DashboardRoute());
     }
   }
 }
 
 final splashProvider = BlocProvider<SplashCubit, SplashState>(
   (ref) {
-    final authenticationRepository = resolve<AuthenticationRepository>();
-
-    return SplashCubit(authenticationRepository);
+    return SplashCubit(
+      resolve<AuthenticationRepository>(),
+      resolve<AppRouter>(),
+    );
   },
 );

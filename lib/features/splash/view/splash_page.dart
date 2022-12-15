@@ -59,10 +59,14 @@ class _SplashPageState extends ConsumerState<SplashPage> {
                 children: [
                   Text(LocaleKeys.splash_by.tr()),
                   16.verticalSpace,
-                  Assets.images.splash.image(width: 100.w),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12.r),
+                    child: Assets.images.splash.image(width: 100.w),
+                  ),
                 ],
               ),
             ),
+            32.verticalSpace,
           ],
         ),
       ),

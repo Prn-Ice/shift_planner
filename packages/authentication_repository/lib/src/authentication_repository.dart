@@ -53,6 +53,34 @@ class AuthenticationRepository {
     );
   }
 
+  /// Register a user with the provided [email] and [password].
+  ///
+  /// Throws a [CreateUserWithEmailAndPasswordFailure] if an exception occurs.
+  TaskEither<String, User> registerWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) {
+    return TaskEither.tryCatch(
+      () async {
+        final response = await _firebaseAuth.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        final user = response.user!.toUser;
+        await _localDataSource.put(AuthenticationLocalDataSource.key, user);
+
+        return user;
+      },
+      (e, s) {
+        if (e is firebase_auth.FirebaseAuthException) {
+          return CreateUserWithEmailAndPasswordFailure.fromCode(e.code).message;
+        }
+
+        return const CreateUserWithEmailAndPasswordFailure().message;
+      },
+    );
+  }
+
   /// Signs out the current user which will emit
   /// [User.empty] from the `user` Stream.
   ///

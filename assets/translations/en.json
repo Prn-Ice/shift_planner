@@ -7,5 +7,15 @@
   "splash": {
     "appName": "Shift Planner",
     "by": "Powered By"
+  },
+  "register": {
+    "welcome": "Welcome to Shift Planner",
+    "register": "Register",
+    "loginInstead": "Login instead"
+  },
+  "login": {
+    "welcome": "Welcome back",
+    "login": "Login",
+    "loginInstead": "Register instead"
   }
 }
