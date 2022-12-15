@@ -27,7 +27,7 @@ abstract class ShiftPlannerColors {
   static const Color transparent = Color(0x00000000);
 
   /// Primary
-  static const Color primary = Color(0xFF0000FF);
+  static const Color primary = Color(0xFF97332e);
 
   /// Secondary
   static const Color secondary = Color(0xFFFB5246);

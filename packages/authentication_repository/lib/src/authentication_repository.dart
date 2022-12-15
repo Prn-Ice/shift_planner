@@ -15,11 +15,8 @@ class AuthenticationRepository {
     required Box<dynamic> box,
     firebase_auth.FirebaseAuth? firebaseAuth,
   })  : _localDataSource = AuthenticationLocalDataSource(box: box),
-        _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance {
-    _listenToFirebaseAuthStream();
-  }
+        _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance;
 
-  late final StreamSubscription<firebase_auth.User?> _firebaseAuthSubscription;
   final AuthenticationLocalDataSource _localDataSource;
   final firebase_auth.FirebaseAuth _firebaseAuth;
 
@@ -71,23 +68,6 @@ class AuthenticationRepository {
       },
       (e, s) => 'Unable to log out',
     );
-  }
-
-  /// Stream of [User] which will emit the current user when
-  /// the authentication state changes.
-  ///
-  /// Emits [User.empty] if the user is not authenticated.
-  void _listenToFirebaseAuthStream() {
-    _firebaseAuthSubscription = _firebaseAuth.authStateChanges().listen(
-      (firebaseUser) async {
-        final user = firebaseUser == null ? User.empty : firebaseUser.toUser;
-        await _localDataSource.put(AuthenticationLocalDataSource.key, user);
-      },
-    );
-  }
-
-  void dispose() {
-    _firebaseAuthSubscription.cancel();
   }
 }
 

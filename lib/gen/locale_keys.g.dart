@@ -5,5 +5,8 @@ abstract class  LocaleKeys {
   static const password = 'password';
   static const counter_appBarTitle = 'counter.appBarTitle';
   static const counter = 'counter';
+  static const splash_appName = 'splash.appName';
+  static const splash_by = 'splash.by';
+  static const splash = 'splash';
 
 }

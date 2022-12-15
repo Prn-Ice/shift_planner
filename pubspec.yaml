@@ -11,8 +11,8 @@ dependencies:
   app_ui:
   flutter:
     sdk: flutter
-  flutter_screenutil: ^5.5.3+2
-  flutter_svg: ^1.1.1+1
+  flutter_screenutil: ^5.6.0
+  flutter_svg: ^1.1.6
 
   # analytics
   dart_code_metrics: ^4.17.1
@@ -46,16 +46,16 @@ dependencies:
   flutter_hooks: ^0.18.5+1
   get_it: ^7.2.0
   hooks_riverpod: ^2.1.1
-  injectable: ^1.5.4
+  injectable: ^2.1.0
   riverbloc: ^2.0.0
 
   # utils
   easy_localization: ^3.0.1
   easy_logger: ^0.0.2
-  equatable: ^2.0.3
-  fast_immutable_collections: ^7.4.1
+  equatable: ^2.0.5
+  fast_immutable_collections: ^8.1.0
   flitaa_extensions:
-  flutter_native_splash: ^2.2.14
+  flutter_native_splash: ^2.2.16
   fpdart: ^0.2.0
   intl: ^0.17.0
   logger: ^1.1.0
@@ -73,7 +73,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   import_sorter: ^4.6.0
-  injectable_generator: ^1.5.4
+  injectable_generator: ^2.1.3
   mocktail: ^0.3.0
   very_good_analysis: ^3.1.0
 

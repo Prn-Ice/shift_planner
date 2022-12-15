@@ -3,5 +3,9 @@
   "password": "Password",
   "counter": {
     "appBarTitle": "Counter"
+  },
+  "splash": {
+    "appName": "Shift Planner",
+    "by": "Powered By"
   }
 }

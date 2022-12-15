@@ -5,6 +5,8 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:authentication_repository/authentication_repository.dart'
+    as _i7;
 
 // Package imports:
 import 'package:crashlytics_service/crashlytics_service.dart' as _i4;
@@ -15,8 +17,9 @@ import 'package:injectable/injectable.dart' as _i2;
 
 // Project imports:
 import '../router/router.dart' as _i3;
-import 'general_module.dart' as _i7;
-import 'service_module.dart' as _i8;
+import 'general_module.dart' as _i8;
+import 'repository_module.dart' as _i10;
+import 'service_module.dart' as _i9;
 
 const String _dev = 'dev';
 const String _prod = 'prod';
@@ -35,6 +38,7 @@ Future<_i1.GetIt> $initGetIt(
   );
   final generalModule = _$GeneralModule();
   final serviceModule = _$ServiceModule();
+  final repositoryModule = _$RepositoryModule();
   gh.lazySingleton<_i3.AppRouter>(() => generalModule.router);
   gh.singleton<_i4.CrashlyticsService>(serviceModule.crashlyticsService);
   gh.singleton<_i5.IHiveService>(
@@ -49,9 +53,13 @@ Future<_i1.GetIt> $initGetIt(
     () => generalModule.box(get<_i5.IHiveService>()),
     preResolve: true,
   );
+  gh.lazySingleton<_i7.AuthenticationRepository>(
+      () => repositoryModule.authenticationRepository(get<_i6.Box<dynamic>>()));
   return get;
 }
 
-class _$GeneralModule extends _i7.GeneralModule {}
+class _$GeneralModule extends _i8.GeneralModule {}
 
-class _$ServiceModule extends _i8.ServiceModule {}
+class _$ServiceModule extends _i9.ServiceModule {}
+
+class _$RepositoryModule extends _i10.RepositoryModule {}

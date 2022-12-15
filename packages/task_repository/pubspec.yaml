@@ -12,7 +12,6 @@ dependencies:
   cloud_firestore: ^4.2.0
   dart_code_metrics: ^4.17.1
   equatable: ^2.0.3
-  fast_immutable_collections: ^7.4.1
   fpdart: ^0.2.0
   flutter:
     sdk: flutter

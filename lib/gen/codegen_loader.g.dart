@@ -21,6 +21,10 @@ class CodegenLoader extends AssetLoader{
   "password": "Password",
   "counter": {
     "appBarTitle": "Counter"
+  },
+  "splash": {
+    "appName": "Shift Planner",
+    "by": "Powered By"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};
