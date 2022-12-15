@@ -85,13 +85,6 @@ packages:
       relative: true
     source: path
     version: "1.1.0-dev.9"
-  auto_size_text:
-    dependency: "direct main"
-    description:
-      name: auto_size_text
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
   bloc:
     dependency: "direct main"
     description:
@@ -288,13 +281,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
-  decimal:
-    dependency: transitive
-    description:
-      name: decimal
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.3.2"
   diff_match_patch:
     dependency: transitive
     description:
@@ -337,13 +323,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.4.3"
-  feedback:
-    dependency: "direct main"
-    description:
-      name: feedback
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.5.0"
   ffi:
     dependency: transitive
     description:
@@ -359,7 +338,7 @@ packages:
     source: hosted
     version: "6.1.2"
   firebase_core:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_core
       url: "https://pub.dartlang.org"
@@ -440,13 +419,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.18.5+1"
-  flutter_libphonenumber:
-    dependency: "direct main"
-    description:
-      name: flutter_libphonenumber
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.3.0"
   flutter_localizations:
     dependency: transitive
     description: flutter
@@ -533,7 +505,7 @@ packages:
     source: hosted
     version: "2.2.0"
   hive:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: hive
       url: "https://pub.dartlang.org"
@@ -581,13 +553,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
-  humanizer:
-    dependency: "direct main"
-    description:
-      name: humanizer
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   image:
     dependency: transitive
     description:
@@ -791,13 +756,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.1.0"
-  pin_code_fields:
-    dependency: "direct main"
-    description:
-      name: pin_code_fields
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "7.4.0"
   platform:
     dependency: transitive
     description:
@@ -861,13 +819,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.1"
-  rational:
-    dependency: transitive
-    description:
-      name: rational
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.2.2"
   riverbloc:
     dependency: "direct main"
     description:

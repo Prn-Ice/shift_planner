@@ -1,4 +1,5 @@
 // Package imports:
+import 'package:crashlytics_service/crashlytics_service.dart';
 import 'package:hive_service/hive_service.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,4 +16,7 @@ abstract class ServiceModule {
   HiveService get hiveService {
     return HiveService(name: '__app_data__')..initializeHive();
   }
+
+  @singleton
+  CrashlyticsService get crashlyticsService => CrashlyticsService();
 }

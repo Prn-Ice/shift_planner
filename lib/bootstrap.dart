@@ -19,6 +19,7 @@ import 'package:bloc_logger/bloc_logger.dart';
 import 'package:crashlytics_service/crashlytics_service.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:injectable/injectable.dart';
@@ -29,10 +30,15 @@ import 'package:stack_trace/stack_trace.dart' as stack_trace;
 import 'package:shift_planner/gen/gen.dart';
 import 'app/app.dart';
 
-Future<void> bootstrap(FutureOr<Widget> Function() builder, {
+Future<void> bootstrap(
+  FutureOr<Widget> Function() builder, {
   String environment = Environment.dev,
+  Future<void> Function()? firebaseInitializer,
 }) async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  // initialize firebase
+  await firebaseInitializer?.call();
 
   // Keep splash open
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
