@@ -13,13 +13,19 @@ class LoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        child,
-        // ignore: use_colored_box
-        if (isLoading) Container(color: Colors.black.withOpacity(0.8)),
-        if (isLoading) const Center(child: CircularProgressIndicator()),
-      ],
+    return SafeArea(
+      child: Stack(
+        children: [
+          child,
+          // ignore: use_colored_box
+          if (isLoading) Container(color: Colors.black.withOpacity(0.8)),
+          if (isLoading)
+            const Align(
+              alignment: Alignment.topCenter,
+              child: LinearProgressIndicator(),
+            ),
+        ],
+      ),
     );
   }
 }

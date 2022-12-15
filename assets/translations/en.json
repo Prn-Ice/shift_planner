@@ -1,13 +1,12 @@
 {
   "email": "Email",
   "password": "Password",
+  "date": "Date",
   "counter": {
     "appBarTitle": "Counter"
   },
-  "splash": {
-    "appName": "Shift Planner",
-    "by": "Powered By"
-  },
+  "appName": "Shift Planner",
+  "by": "Powered By",
   "register": {
     "welcome": "Welcome to Shift Planner",
     "register": "Register",
@@ -17,5 +16,15 @@
     "welcome": "Welcome back",
     "login": "Login",
     "registerInstead": "Register instead"
+  },
+  "dashboard": {
+    "today": "Today",
+    "all": "All",
+    "completed": "Completed",
+    "title": "Title",
+    "date": "Date",
+    "shift": "Shift",
+    "addTask": "Add Task",
+    "addTaskSuccess": "Task added successfully"
   }
 }

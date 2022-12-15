@@ -43,7 +43,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16).w,
               child: Text(
-                LocaleKeys.splash_appName.tr(),
+                LocaleKeys.appName.tr(),
                 textAlign: TextAlign.center,
                 style: headlineLarge?.copyWith(
                   color: primary,
@@ -57,7 +57,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16).w,
               child: Column(
                 children: [
-                  Text(LocaleKeys.splash_by.tr()),
+                  Text(LocaleKeys.by.tr()),
                   16.verticalSpace,
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12.r),

@@ -15,7 +15,14 @@ import 'package:shift_planner/features/splash/splash.dart';
     AutoRoute<void>(page: SplashPage, initial: true),
     AutoRoute<void>(page: LoginPage),
     AutoRoute<void>(page: RegisterPage),
-    AutoRoute<void>(page: DashboardPage),
+    AutoRoute<void>(
+      page: DashboardPage,
+      children: [
+        AutoRoute<void>(page: AllPage),
+        AutoRoute<void>(page: CompletedPage),
+        AutoRoute<void>(page: TodayPage),
+      ],
+    ),
     AutoRoute<void>(page: CounterPage),
   ],
 )

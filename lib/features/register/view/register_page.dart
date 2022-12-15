@@ -94,6 +94,7 @@ class _PasswordInput extends ConsumerWidget {
     return TextFormField(
       obscureText: true,
       decoration: InputDecoration(
+        icon: const Icon(Icons.password),
         hintText: LocaleKeys.password.tr(),
         errorText: password.errorText,
       ),
@@ -116,6 +117,7 @@ class _EmailInput extends ConsumerWidget {
 
     return TextFormField(
       decoration: InputDecoration(
+        icon: const Icon(Icons.email),
         hintText: LocaleKeys.email.tr(),
         errorText: email.errorText,
       ),

@@ -19,13 +19,12 @@ class CodegenLoader extends AssetLoader{
   static const Map<String,dynamic> en = {
   "email": "Email",
   "password": "Password",
+  "date": "Date",
   "counter": {
     "appBarTitle": "Counter"
   },
-  "splash": {
-    "appName": "Shift Planner",
-    "by": "Powered By"
-  },
+  "appName": "Shift Planner",
+  "by": "Powered By",
   "register": {
     "welcome": "Welcome to Shift Planner",
     "register": "Register",
@@ -35,6 +34,16 @@ class CodegenLoader extends AssetLoader{
     "welcome": "Welcome back",
     "login": "Login",
     "registerInstead": "Register instead"
+  },
+  "dashboard": {
+    "today": "Today",
+    "all": "All",
+    "completed": "Completed",
+    "title": "Title",
+    "date": "Date",
+    "shift": "Shift",
+    "addTask": "Add Task",
+    "addTaskSuccess": "Task added successfully"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};

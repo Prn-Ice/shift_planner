@@ -76,6 +76,33 @@ class AppRouter extends _i6.RootStackRouter {
         barrierDismissible: false,
       );
     },
+    AllRoute.name: (routeData) {
+      return _i6.CustomPage<void>(
+        routeData: routeData,
+        child: const _i4.AllPage(),
+        transitionsBuilder: _i6.TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    CompletedRoute.name: (routeData) {
+      return _i6.CustomPage<void>(
+        routeData: routeData,
+        child: const _i4.CompletedPage(),
+        transitionsBuilder: _i6.TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    TodayRoute.name: (routeData) {
+      return _i6.CustomPage<void>(
+        routeData: routeData,
+        child: const _i4.TodayPage(),
+        transitionsBuilder: _i6.TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
   };
 
   @override
@@ -95,6 +122,23 @@ class AppRouter extends _i6.RootStackRouter {
         _i6.RouteConfig(
           DashboardRoute.name,
           path: '/dashboard-page',
+          children: [
+            _i6.RouteConfig(
+              AllRoute.name,
+              path: 'all-page',
+              parent: DashboardRoute.name,
+            ),
+            _i6.RouteConfig(
+              CompletedRoute.name,
+              path: 'completed-page',
+              parent: DashboardRoute.name,
+            ),
+            _i6.RouteConfig(
+              TodayRoute.name,
+              path: 'today-page',
+              parent: DashboardRoute.name,
+            ),
+          ],
         ),
         _i6.RouteConfig(
           CounterRoute.name,
@@ -142,10 +186,11 @@ class RegisterRoute extends _i6.PageRouteInfo<void> {
 /// generated route for
 /// [_i4.DashboardPage]
 class DashboardRoute extends _i6.PageRouteInfo<void> {
-  const DashboardRoute()
+  const DashboardRoute({List<_i6.PageRouteInfo>? children})
       : super(
           DashboardRoute.name,
           path: '/dashboard-page',
+          initialChildren: children,
         );
 
   static const String name = 'DashboardRoute';
@@ -161,4 +206,40 @@ class CounterRoute extends _i6.PageRouteInfo<void> {
         );
 
   static const String name = 'CounterRoute';
+}
+
+/// generated route for
+/// [_i4.AllPage]
+class AllRoute extends _i6.PageRouteInfo<void> {
+  const AllRoute()
+      : super(
+          AllRoute.name,
+          path: 'all-page',
+        );
+
+  static const String name = 'AllRoute';
+}
+
+/// generated route for
+/// [_i4.CompletedPage]
+class CompletedRoute extends _i6.PageRouteInfo<void> {
+  const CompletedRoute()
+      : super(
+          CompletedRoute.name,
+          path: 'completed-page',
+        );
+
+  static const String name = 'CompletedRoute';
+}
+
+/// generated route for
+/// [_i4.TodayPage]
+class TodayRoute extends _i6.PageRouteInfo<void> {
+  const TodayRoute()
+      : super(
+          TodayRoute.name,
+          path: 'today-page',
+        );
+
+  static const String name = 'TodayRoute';
 }

@@ -1,12 +1,11 @@
 import 'package:app_ui/src/typography/typography.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /// ShiftPlanner Text Style Definitions
 class ShiftPlannerTextStyle {
-  static const _baseTextStyle = TextStyle(
-    package: 'app_ui',
-    fontFamily: 'OpenSans',
+  static final _baseTextStyle = GoogleFonts.raleway(
     fontWeight: ShiftPlannerFontWeight.regular,
   );
 

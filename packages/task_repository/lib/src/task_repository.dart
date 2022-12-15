@@ -22,26 +22,32 @@ class TaskRepository implements ITaskRepository {
     return _firestore
         .collection(ITaskRepository.collectionName)
         .withConverter<NurseTasks>(
-          fromFirestore: (s, _) => NurseTasks.fromJson(s.data()!),
+          fromFirestore: (s, _) {
+            try {
+              return NurseTasks.fromJson(s.data()!);
+            } catch (e) {
+              return const NurseTasks();
+            }
+          },
           toFirestore: (tasks, _) => tasks.toJson(),
         );
   }
 
   @override
-  Future<NurseTasks> get tasksOneShot {
+  Future<NurseTasks?> get tasksOneShot {
     final userId = _authenticationRepository.currentUser.id;
 
-    return _tasksRef.doc(userId).get().then((snapshot) => snapshot.data()!);
+    return _tasksRef.doc(userId).get().then((snapshot) => snapshot.data());
   }
 
   @override
-  Stream<NurseTasks> get tasks {
+  Stream<NurseTasks?> get tasks {
     final userId = _authenticationRepository.currentUser.id;
 
     return _tasksRef
         .doc(userId)
         .snapshots()
-        .map((snapshot) => snapshot.data()!)
+        .map((snapshot) => snapshot.data())
         .shareValue();
   }
 
@@ -50,13 +56,13 @@ class TaskRepository implements ITaskRepository {
     return TaskEither.tryCatch(
       () async {
         final current = await tasksOneShot;
-        if (current.tasks?.contains(task) ?? false) {
+        if (current?.tasks?.contains(task) ?? false) {
           throw DuplicateTaskException();
         }
 
         final userId = _authenticationRepository.currentUser.id;
         // ignore: omit_local_variable_types
-        final List<NurseTask> newTasks = [...current.tasks ?? [], task];
+        final List<NurseTask> newTasks = [...current?.tasks ?? [], task];
         final request = NurseTasks(tasks: newTasks);
 
         await _tasksRef.doc(userId).set(request);
@@ -72,7 +78,7 @@ class TaskRepository implements ITaskRepository {
     return TaskEither.tryCatch(
       () async {
         final current = await tasksOneShot;
-        final tasks = current.tasks ?? [];
+        final tasks = current?.tasks ?? [];
         final taskIndex = tasks.indexOf(task);
         if (taskIndex == -1) {
           throw TaskNotFoundException();
@@ -95,7 +101,7 @@ class TaskRepository implements ITaskRepository {
     return TaskEither.tryCatch(
       () async {
         final current = await tasksOneShot;
-        final tasks = current.tasks ?? [];
+        final tasks = current?.tasks ?? [];
         final taskIndex = tasks.indexOf(task);
         if (taskIndex == -1) {
           throw TaskNotFoundException();

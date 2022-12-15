@@ -15,5 +15,5 @@ _$_NurseTasks _$$_NurseTasksFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_NurseTasksToJson(_$_NurseTasks instance) =>
     <String, dynamic>{
-      'tasks': instance.tasks,
+      'tasks': instance.tasks?.map((e) => e.toJson()).toList(),
     };

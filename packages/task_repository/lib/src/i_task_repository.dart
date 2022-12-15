@@ -5,10 +5,10 @@ abstract class ITaskRepository {
   static const String collectionName = 'tasks';
 
   /// Stream of Tasks for current user from firebase
-  Stream<NurseTasks> get tasks;
+  Stream<NurseTasks?> get tasks;
 
   /// Fetch but don't listen to tasks
-  Future<NurseTasks> get tasksOneShot;
+  Future<NurseTasks?> get tasksOneShot;
 
   /// Create task with [request] for current user
   TaskEither<String, bool> createTask(NurseTask request);
