@@ -1,6 +1,6 @@
 name: app_ui
 description: UI Toolkit for the ShiftPlanner Flutter Application
-version: 0.0.1
+version: 0.0.2-dev.0
 publish_to: none
 
 environment:

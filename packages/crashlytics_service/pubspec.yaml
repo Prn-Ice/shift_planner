@@ -1,6 +1,6 @@
 name: crashlytics_service
 description: Flutter package with useful functions from firebase crashlytics.
-version: 1.1.0-dev.3
+version: 1.1.0-dev.4
 publish_to: none
 
 environment:

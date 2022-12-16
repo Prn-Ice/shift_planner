@@ -1,3 +1,7 @@
+## 1.1.0-dev.2
+
+ - **FEAT**: initial commit.
+
 ## 1.1.0-dev.1
 
  - **FEAT**: add fully functional withdraw.

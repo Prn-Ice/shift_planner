@@ -1,6 +1,6 @@
 name: auto_route_observer
 description: Dart package that logs auto_route navigation events using the loggy package.
-version: 1.1.0-dev.9
+version: 1.1.0-dev.10
 publish_to: none
 
 environment:
