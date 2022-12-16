@@ -61,7 +61,11 @@ class _SplashPageState extends ConsumerState<SplashPage> {
                   16.verticalSpace,
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12.r),
-                    child: Assets.images.splash.image(width: 100.w),
+                    child: Container(
+                      color: Colors.white,
+                      padding: const EdgeInsets.symmetric(horizontal: 16).w,
+                      child: Assets.images.splash.image(width: 100.w),
+                    ),
                   ),
                 ],
               ),

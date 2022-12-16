@@ -25,6 +25,8 @@
     "title": "Title",
     "shift": "Shift",
     "addTask": "Add Task",
-    "addTaskSuccess": "Task added successfully"
+    "addTaskSuccess": "Task added successfully",
+    "edit": "Edit",
+    "delete": "Delete"
   }
 }

@@ -89,6 +89,7 @@ class AuthenticationRepository {
     return TaskEither.tryCatch(
       () async {
         await _firebaseAuth.signOut();
+        await _localDataSource.clear();
 
         return true;
       },

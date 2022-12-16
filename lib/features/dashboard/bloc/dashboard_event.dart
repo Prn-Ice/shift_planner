@@ -14,3 +14,7 @@ class DashboardFetchUser extends DashboardEvent {
 class DashboardFetchTasks extends DashboardEvent {
   const DashboardFetchTasks();
 }
+
+class DashboardLogout extends DashboardEvent {
+  const DashboardLogout();
+}

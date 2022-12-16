@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:app_ui/app_ui.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:formz/formz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
@@ -13,36 +14,41 @@ import 'package:shift_planner/features/dashboard/bloc/dashboard_bloc.dart';
 import 'package:shift_planner/gen/gen.dart';
 import '../widgets/widgets.dart';
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends ConsumerWidget {
   const DashboardPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return AutoTabsScaffold(
-      routes: const [
-        TodayRoute(),
-        AllRoute(),
-        CompletedRoute(),
-      ],
-      appBarBuilder: (context, tabsRouter) {
-        return AppBar(title: Text(_getTitle(tabsRouter.activeIndex)));
-      },
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {
-          showModalBottomSheet<void>(
-            context: context,
-            builder: (context) => const NewTaskBottomSheet(),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final status = ref.watch(dashboardProvider.select((value) => value.status));
+
+    return LoadingIndicator(
+      isLoading: status == FormzStatus.submissionInProgress,
+      child: AutoTabsScaffold(
+        routes: const [
+          TodayRoute(),
+          AllRoute(),
+          CompletedRoute(),
+        ],
+        appBarBuilder: (context, tabsRouter) {
+          return AppBar(title: Text(_getTitle(tabsRouter.activeIndex)));
+        },
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          onPressed: () {
+            showModalBottomSheet<void>(
+              context: context,
+              builder: (context) => const NewTaskBottomSheet(),
+            );
+          },
+        ),
+        drawer: const _Drawer(),
+        builder: (context, child, animation) {
+          return FadeTransition(
+            opacity: animation,
+            child: child,
           );
         },
       ),
-      drawer: const _Drawer(),
-      builder: (context, child, animation) {
-        return FadeTransition(
-          opacity: animation,
-          child: child,
-        );
-      },
     );
   }
 
@@ -108,6 +114,15 @@ class _Drawer extends ConsumerWidget {
             onTap: () => context
               ..navigateTo(const CompletedRoute())
               ..popRoute(),
+          ),
+          256.verticalSpace,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16).w,
+            child: OutlinedButton(
+              onPressed: () =>
+                  ref.read(dashboardProvider.bloc).add(const DashboardLogout()),
+              child: const Text('Logout'),
+            ),
           ),
         ],
       ),

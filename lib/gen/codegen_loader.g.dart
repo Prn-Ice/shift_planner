@@ -43,7 +43,9 @@ class CodegenLoader extends AssetLoader{
     "title": "Title",
     "shift": "Shift",
     "addTask": "Add Task",
-    "addTaskSuccess": "Task added successfully"
+    "addTaskSuccess": "Task added successfully",
+    "edit": "Edit",
+    "delete": "Delete"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};
