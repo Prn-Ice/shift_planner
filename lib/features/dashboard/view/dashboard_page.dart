@@ -65,6 +65,19 @@ class _Drawer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(dashboardProvider, (prev, next) {
+      if (prev == next) return;
+
+      if (next.status == FormzStatus.submissionFailure &&
+          next.error.isNotEmpty) {
+        final snackBar = SnackBar(
+          content: Text(next.error),
+        );
+
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
+    });
+
     final user = ref.watch(dashboardProvider.select((value) => value.user));
 
     return Drawer(
@@ -91,6 +104,20 @@ class _Drawer extends ConsumerWidget {
                   user?.email ?? '',
                   style: const TextStyle(color: Colors.white),
                 ),
+                const Spacer(),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      foregroundColor:
+                          Theme.of(context).colorScheme.secondaryContainer,
+                    ),
+                    onPressed: () => ref
+                        .read(dashboardProvider.bloc)
+                        .add(const DashboardLogout()),
+                    child: const Text('Logout'),
+                  ),
+                ),
               ],
             ),
           ),
@@ -114,15 +141,6 @@ class _Drawer extends ConsumerWidget {
             onTap: () => context
               ..navigateTo(const CompletedRoute())
               ..popRoute(),
-          ),
-          256.verticalSpace,
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16).w,
-            child: OutlinedButton(
-              onPressed: () =>
-                  ref.read(dashboardProvider.bloc).add(const DashboardLogout()),
-              child: const Text('Logout'),
-            ),
           ),
         ],
       ),

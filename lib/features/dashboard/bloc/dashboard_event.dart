@@ -15,6 +15,15 @@ class DashboardFetchTasks extends DashboardEvent {
   const DashboardFetchTasks();
 }
 
+class DashboardDeleteTask extends DashboardEvent {
+  const DashboardDeleteTask(this.task);
+
+  final NurseTask task;
+
+  @override
+  List<Object> get props => [task];
+}
+
 class DashboardLogout extends DashboardEvent {
   const DashboardLogout();
 }

@@ -26,6 +26,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<DashboardFetchUser>(_onFetchUser);
     on<DashboardFetchTasks>(_onFetchTasks);
     on<DashboardLogout>(_onLogout);
+    on<DashboardDeleteTask>(_onDeleteTask);
   }
 
   final AuthenticationRepository _authenticationRepository;
@@ -68,6 +69,22 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       },
       (r) {
         _router.replaceAll(const [LoginRoute()]);
+      },
+    );
+  }
+
+  FutureOr<void> _onDeleteTask(
+    DashboardDeleteTask event,
+    Emitter<DashboardState> emit,
+  ) async {
+    final response = await _taskRepository.deleteTask(event.task).run();
+
+    response.match(
+      (l) {
+        emit(state.copyWith(status: FormzStatus.submissionFailure, error: l));
+      },
+      (r) {
+        emit(state.copyWith(status: FormzStatus.submissionSuccess));
       },
     );
   }

@@ -89,8 +89,8 @@ class TaskRepository implements ITaskRepository {
         }
 
         final userId = _authenticationRepository.currentUser.id;
-        tasks.removeAt(taskIndex);
-        final request = NurseTasks(tasks: tasks);
+        final newTasks = tasks.toList()..removeAt(taskIndex);
+        final request = NurseTasks(tasks: newTasks);
 
         await _tasksRef.doc(userId).set(request);
 

@@ -107,7 +107,16 @@ class _TaskTile extends ConsumerWidget {
             label: LocaleKeys.dashboard_edit.tr(),
           ),
           SlidableAction(
-            onPressed: (context) {},
+            onPressed: (context) async {
+              final value = await showDialog<bool?>(
+                context: context,
+                builder: (context) => DeleteTaskDialog(task: task),
+              );
+
+              if (value ?? false) {
+                ref.read(dashboardProvider.bloc).add(DashboardDeleteTask(task));
+              }
+            },
             backgroundColor: Theme.of(context).errorColor,
             foregroundColor: Colors.white,
             icon: Icons.delete,

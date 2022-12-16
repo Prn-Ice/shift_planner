@@ -46,7 +46,9 @@ class CodegenLoader extends AssetLoader{
     "addTaskSuccess": "Task added successfully",
     "edit": "Edit",
     "delete": "Delete",
-    "deleteConfirmation": "Are you sure you want to delete this task?",
+    "deleteTask": "Delete task",
+    "deleteConfirmation": "Are you sure you want to delete task",
+    "cancel": "Cancel",
     "save": "Save"
   }
 };
