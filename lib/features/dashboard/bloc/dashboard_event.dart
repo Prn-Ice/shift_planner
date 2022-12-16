@@ -24,6 +24,15 @@ class DashboardDeleteTask extends DashboardEvent {
   List<Object> get props => [task];
 }
 
+class DashboardToggleTask extends DashboardEvent {
+  const DashboardToggleTask(this.task);
+
+  final NurseTask task;
+
+  @override
+  List<Object> get props => [task];
+}
+
 class DashboardLogout extends DashboardEvent {
   const DashboardLogout();
 }

@@ -16,6 +16,6 @@ abstract class ITaskRepository {
   /// Delete task that matches [request] for current user
   TaskEither<String, bool> deleteTask(NurseTask request);
 
-  /// Update task that matches [request] for current user with [update]
-  TaskEither<String, bool> updateTask(NurseTask request, NurseTask update);
+  /// Update task that matches [oldTask] for current user with [newTask]
+  TaskEither<String, bool> updateTask(NurseTask oldTask, NurseTask newTask);
 }

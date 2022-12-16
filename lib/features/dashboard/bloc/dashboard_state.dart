@@ -32,14 +32,28 @@ class DashboardState extends Equatable {
 }
 
 extension DashboardStateX on DashboardState {
+  List<NurseTask> get tasksSorted => tasks
+      .sortedBy<DateTime>((element) => element.dueDate ?? DateTime.now())
+      .reversedView;
+
   List<NurseTask> tasksByDate(DateTime date) {
-    return tasks
+    return tasksSorted
         .where((element) => element.dueDate.dayMonthYear == date.dayMonthYear)
         .toList();
   }
 
-  Map<Shift?, List<NurseTask>> tasksGrouped(DateTime date) {
+  Map<Shift?, List<NurseTask>> tasksByDateGrouped(DateTime date) {
     return tasksByDate(date).groupListsBy((element) => element.shift);
+  }
+
+  Map<Shift?, List<NurseTask>> get allTasksGrouped {
+    return tasksSorted.groupListsBy((element) => element.shift);
+  }
+
+  Map<Shift?, List<NurseTask>> get completedTasksGrouped {
+    return tasksSorted
+        .where((element) => element.isComplete ?? false)
+        .groupListsBy((element) => element.shift);
   }
 }
 

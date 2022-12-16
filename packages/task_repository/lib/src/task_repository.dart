@@ -101,12 +101,12 @@ class TaskRepository implements ITaskRepository {
   }
 
   @override
-  TaskEither<String, bool> updateTask(NurseTask task, NurseTask update) {
+  TaskEither<String, bool> updateTask(NurseTask oldTask, NurseTask newTask) {
     return TaskEither.tryCatch(
       () async {
         final current = await tasksOneShot;
         final tasks = current?.tasks ?? [];
-        final taskIndex = tasks.indexOf(task);
+        final taskIndex = tasks.indexOf(oldTask);
         if (taskIndex == -1) {
           throw TaskNotFoundException();
         }
@@ -114,7 +114,7 @@ class TaskRepository implements ITaskRepository {
         final userId = _authenticationRepository.currentUser.id;
         final newTasks = tasks.toList()
           ..removeAt(taskIndex)
-          ..insert(taskIndex, update);
+          ..insert(taskIndex, newTask);
         final request = NurseTasks(tasks: newTasks);
 
         await _tasksRef.doc(userId).set(request);
