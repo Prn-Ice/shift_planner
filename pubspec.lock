@@ -42,7 +42,7 @@ packages:
       path: "packages/app_ui"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2-dev.0"
   archive:
     dependency: transitive
     description:
@@ -70,7 +70,7 @@ packages:
       path: "packages/authentication_repository"
       relative: true
     source: path
-    version: "1.1.0"
+    version: "1.2.0-dev.0"
   auto_route:
     dependency: "direct main"
     description:
@@ -91,7 +91,7 @@ packages:
       path: "packages/auto_route_observer"
       relative: true
     source: path
-    version: "1.1.0-dev.9"
+    version: "1.1.0-dev.10"
   bloc:
     dependency: "direct main"
     description:
@@ -105,7 +105,7 @@ packages:
       path: "packages/bloc_logger"
       relative: true
     source: path
-    version: "0.0.3-dev.9"
+    version: "0.0.3-dev.10"
   bloc_test:
     dependency: "direct dev"
     description:
@@ -259,7 +259,7 @@ packages:
       path: "packages/crashlytics_service"
       relative: true
     source: path
-    version: "1.1.0-dev.3"
+    version: "1.1.0-dev.4"
   crypto:
     dependency: transitive
     description:
@@ -594,14 +594,14 @@ packages:
       path: "packages/hive_repository"
       relative: true
     source: path
-    version: "1.1.0"
+    version: "1.2.0-dev.0"
   hive_service:
     dependency: "direct main"
     description:
       path: "packages/hive_service"
       relative: true
     source: path
-    version: "1.1.0"
+    version: "1.2.0-dev.0"
   hooks_riverpod:
     dependency: "direct main"
     description:
@@ -923,7 +923,7 @@ packages:
       path: "packages/riverpod_logger"
       relative: true
     source: path
-    version: "1.1.0-dev.1"
+    version: "1.1.0-dev.2"
   rxdart:
     dependency: transitive
     description:
@@ -1103,7 +1103,7 @@ packages:
       path: "packages/task_repository"
       relative: true
     source: path
-    version: "1.0.0+1"
+    version: "1.1.0-dev.0"
   term_glyph:
     dependency: transitive
     description:

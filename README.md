@@ -20,10 +20,15 @@ Help nurses keep notes
 >
 > Once thats done, you should be able to run the app using the commands below.
 >
-> 2. Some nice extras added
+> 2. Extra features
 >    - Auto dark theme
 >    - German translations
 >    - Swipe to edit and delete tasks
+> 3. Latest release build is [here](https://github.com/Prn-Ice/shift_planner/releases)
+> 4. If you'd rather not create an account, I have one with a few items added already
+>    - Email: princenna77@gmail.com
+>    - Password: `password`
+> 5. A web app can be found [here](https://dexter-shift-planner.web.app/) but I didn't do much testing there.
 
 ## Getting Started 🚀
 

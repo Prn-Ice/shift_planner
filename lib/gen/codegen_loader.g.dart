@@ -16,7 +16,43 @@ class CodegenLoader extends AssetLoader{
     return Future.value(mapLocales[locale.toString()]);
   }
 
-  static const Map<String,dynamic> en = {
+  static const Map<String,dynamic> de = {
+  "email": "Email",
+  "password": "Passwort",
+  "date": "Datum",
+  "time": "Zeit",
+  "counter": {
+    "appBarTitle": "Schalter"
+  },
+  "appName": "Schichtplaner",
+  "by": "Bereitgestellt von",
+  "register": {
+    "welcome": "Willkommen beim Schichtplaner",
+    "register": "Registrieren",
+    "loginInstead": "Anmeldung"
+  },
+  "login": {
+    "welcome": "Willkommen zurück",
+    "login": "Anmeldung",
+    "registerInstead": "Registrieren Sie sich stattdessen"
+  },
+  "dashboard": {
+    "today": "Heute",
+    "all": "Alles",
+    "completed": "Vollendet",
+    "title": "Titel",
+    "shift": "Schicht",
+    "addTask": "Aufgabe hinzufügen",
+    "addTaskSuccess": "Aufgabe erfolgreich hinzugefügt",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "deleteTask": "Aufgabe löschen",
+    "deleteConfirmation": "Möchten Sie die Aufgabe wirklich löschen?",
+    "cancel": "Stornieren",
+    "save": "Speichern"
+  }
+};
+static const Map<String,dynamic> en = {
   "email": "Email",
   "password": "Password",
   "date": "Date",
@@ -52,5 +88,5 @@ class CodegenLoader extends AssetLoader{
     "save": "Save"
   }
 };
-static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};
+static const Map<String, Map<String,dynamic>> mapLocales = {"de": de, "en": en};
 }
