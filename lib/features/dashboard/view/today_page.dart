@@ -14,6 +14,7 @@ import 'package:task_repository/task_repository.dart';
 import 'package:shift_planner/app/app.dart';
 import 'package:shift_planner/features/dashboard/bloc/dashboard_bloc.dart';
 import 'package:shift_planner/gen/gen.dart';
+import '../widgets/widgets.dart';
 
 class TodayPage extends ConsumerWidget {
   const TodayPage({super.key});
@@ -24,29 +25,60 @@ class TodayPage extends ConsumerWidget {
       dashboardProvider.select((value) => value.tasksGrouped(DateTime.now())),
     );
 
+    final morningTasks = tasks[Shift.morning];
+    final eveningTasks = tasks[Shift.evening];
+    final nightTasks = tasks[Shift.night];
+
     return CustomScrollView(
-      slivers: tasks.entries.map(
-        (e) {
-          return SliverStickyHeader(
-            header: Container(
-              height: 50.h,
-              color: e.key.color,
-              padding: const EdgeInsets.symmetric(horizontal: 16).w,
-              alignment: Alignment.centerLeft,
-              child: Text(
-                e.key?.name.toUpperCase() ?? 'Title',
-                style: const TextStyle(color: Colors.white),
-              ),
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                childCount: e.value.length,
-                (context, index) => _TaskTile(e.value[index]),
-              ),
-            ),
-          );
-        },
-      ).toList(),
+      slivers: [
+        if (morningTasks?.isNotEmpty ?? false)
+          _TaskGroup(
+            shift: Shift.morning,
+            items: morningTasks!,
+          ),
+        if (eveningTasks?.isNotEmpty ?? false)
+          _TaskGroup(
+            shift: Shift.evening,
+            items: eveningTasks!,
+          ),
+        if (nightTasks?.isNotEmpty ?? false)
+          _TaskGroup(
+            shift: Shift.night,
+            items: nightTasks!,
+          ),
+      ],
+    );
+  }
+}
+
+class _TaskGroup extends StatelessWidget {
+  const _TaskGroup({
+    required this.shift,
+    required this.items,
+  });
+
+  final Shift shift;
+  final List<NurseTask> items;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverStickyHeader(
+      header: Container(
+        height: 50.h,
+        color: shift.color,
+        padding: const EdgeInsets.symmetric(horizontal: 16).w,
+        alignment: Alignment.centerLeft,
+        child: Text(
+          shift.name.toUpperCase(),
+          style: const TextStyle(color: Colors.white),
+        ),
+      ),
+      sliver: SliverList(
+        delegate: SliverChildBuilderDelegate(
+          childCount: items.length,
+          (context, index) => _TaskTile(items[index]),
+        ),
+      ),
     );
   }
 }
@@ -63,7 +95,12 @@ class _TaskTile extends ConsumerWidget {
         motion: const DrawerMotion(),
         children: [
           SlidableAction(
-            onPressed: (context) {},
+            onPressed: (context) {
+              showModalBottomSheet<void>(
+                context: context,
+                builder: (context) => EditTaskBottomSheet(task: task),
+              );
+            },
             backgroundColor: Theme.of(context).colorScheme.secondary,
             foregroundColor: Colors.white,
             icon: Icons.edit,

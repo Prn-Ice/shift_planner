@@ -6,21 +6,40 @@ import 'package:app_ui/app_ui.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:formz/formz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:task_repository/task_repository.dart';
 
 // Project imports:
 import 'package:shift_planner/app/app.dart';
 import 'package:shift_planner/app/models/models.dart';
 import 'package:shift_planner/features/dashboard/widgets/widgets.dart';
 import 'package:shift_planner/gen/gen.dart';
-import '../cubit/new_task_cubit.dart';
+import '../cubit/edit_task_cubit.dart';
 
-class NewTaskBottomSheet extends ConsumerWidget {
-  const NewTaskBottomSheet({super.key});
+class EditTaskBottomSheet extends ConsumerStatefulWidget {
+  const EditTaskBottomSheet({super.key, required this.task});
+
+  final NurseTask task;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(newTaskProvider, (prev, next) => _listener(prev, next, context));
-    final status = ref.watch(newTaskProvider.select((value) => value.status));
+  ConsumerState<EditTaskBottomSheet> createState() =>
+      _EditTaskBottomSheetState();
+}
+
+class _EditTaskBottomSheetState extends ConsumerState<EditTaskBottomSheet> {
+  @override
+  void initState() {
+    super.initState();
+
+    ref.read(editTaskProvider.bloc).onOldTaskChanged(widget.task);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ref.listen(
+      editTaskProvider,
+      (prev, next) => _listener(prev, next, context),
+    );
+    final status = ref.watch(editTaskProvider.select((value) => value.status));
 
     return LoadingIndicator(
       isLoading: status == FormzStatus.submissionInProgress,
@@ -46,7 +65,11 @@ class NewTaskBottomSheet extends ConsumerWidget {
     );
   }
 
-  void _listener(NewTaskState? prev, NewTaskState next, BuildContext context) {
+  void _listener(
+    EditTaskState? prev,
+    EditTaskState next,
+    BuildContext context,
+  ) {
     if (prev == next) return;
 
     if (next.status == FormzStatus.submissionSuccess) {
@@ -73,19 +96,21 @@ class _TitleInput extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final title = ref.watch(
-      newTaskProvider.select((value) => value.title),
+      editTaskProvider.select((value) => value.title),
     );
 
     return TextFormField(
+      key: ValueKey(title),
       decoration: InputDecoration(
         icon: const Icon(Icons.text_fields),
         hintText: LocaleKeys.dashboard_title.tr(),
         errorText: title.errorText,
       ),
+      initialValue: title.value,
       textCapitalization: TextCapitalization.sentences,
       textInputAction: TextInputAction.next,
       onChanged: (value) =>
-          ref.read(newTaskProvider.bloc).onTitleChanged(value),
+          ref.read(editTaskProvider.bloc).onTitleChanged(value),
     );
   }
 }
@@ -96,14 +121,16 @@ class _DateInput extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final date = ref.watch(
-      newTaskProvider.select((value) => value.date),
+      editTaskProvider.select((value) => value.date),
     );
 
     return DateInput(
+      key: ValueKey(date),
       errorText: date.errorText,
+      initial: DateTime.tryParse(date.value),
       // ignore: prefer-extracting-callbacks
       onChanged: (value) {
-        ref.read(newTaskProvider.bloc).onDateChanged(value.toIso8601String());
+        ref.read(editTaskProvider.bloc).onDateChanged(value.toIso8601String());
         FocusScope.of(context).nextFocus();
       },
     );
@@ -116,14 +143,18 @@ class _TimeInput extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final time = ref.watch(
-      newTaskProvider.select((value) => value.date),
+      editTaskProvider.select((value) => value.time),
     );
 
     return TimeInput(
+      key: ValueKey(time),
       errorText: time.errorText,
+      initial: TimeOfDay.fromDateTime(
+        DateTime.tryParse(time.value) ?? DateTime.now(),
+      ),
       // ignore: prefer-extracting-callbacks
       onChanged: (value) {
-        ref.read(newTaskProvider.bloc).onTimeChanged(value.toIso8601String);
+        ref.read(editTaskProvider.bloc).onTimeChanged(value.toIso8601String);
       },
     );
   }
@@ -135,7 +166,7 @@ class _ShiftInput extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final shift = ref.watch(
-      newTaskProvider.select((value) => value.shift),
+      editTaskProvider.select((value) => value.shift),
     );
 
     return ShiftInput(
@@ -149,13 +180,13 @@ class _AddButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final status = ref.watch(newTaskProvider.select((value) => value.status));
+    final status = ref.watch(editTaskProvider.select((value) => value.status));
 
     return ElevatedButton(
       onPressed: status == FormzStatus.valid
-          ? ref.read(newTaskProvider.bloc).onCreateTask
+          ? ref.read(editTaskProvider.bloc).onUpdateTask
           : null,
-      child: Text(LocaleKeys.dashboard_addTask.tr()),
+      child: Text(LocaleKeys.dashboard_save.tr()),
     );
   }
 }

@@ -101,7 +101,7 @@ class TaskRepository implements ITaskRepository {
   }
 
   @override
-  TaskEither<String, bool> updateTask(NurseTask task) {
+  TaskEither<String, bool> updateTask(NurseTask task, NurseTask update) {
     return TaskEither.tryCatch(
       () async {
         final current = await tasksOneShot;
@@ -112,16 +112,16 @@ class TaskRepository implements ITaskRepository {
         }
 
         final userId = _authenticationRepository.currentUser.id;
-        tasks
+        final newTasks = tasks.toList()
           ..removeAt(taskIndex)
-          ..insert(taskIndex, task);
-        final request = NurseTasks(tasks: tasks);
+          ..insert(taskIndex, update);
+        final request = NurseTasks(tasks: newTasks);
 
         await _tasksRef.doc(userId).set(request);
 
         return true;
       },
-      (e, s) => 'Failed to delete task: $e',
+      (e, s) => 'Failed to update task: $e',
     );
   }
 
@@ -150,7 +150,7 @@ class TaskRepository implements ITaskRepository {
 
       await _tasksRef.doc(userId).set(request);
     } catch (e) {
-      log('Failed to move uncompleted task: $e');
+      log('Failed to move uncompleted tasks: $e');
     }
   }
 }

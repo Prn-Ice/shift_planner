@@ -26,6 +26,8 @@ abstract class  LocaleKeys {
   static const dashboard_addTaskSuccess = 'dashboard.addTaskSuccess';
   static const dashboard_edit = 'dashboard.edit';
   static const dashboard_delete = 'dashboard.delete';
+  static const dashboard_deleteConfirmation = 'dashboard.deleteConfirmation';
+  static const dashboard_save = 'dashboard.save';
   static const dashboard = 'dashboard';
 
 }
