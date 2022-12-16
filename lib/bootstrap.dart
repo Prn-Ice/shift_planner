@@ -97,7 +97,7 @@ Future<void> bootstrap(
 
   runApp(
     EasyLocalization(
-      supportedLocales: const [Locale('en')],
+      supportedLocales: const [Locale('en'), Locale('de')],
       path: 'assets/translations',
       fallbackLocale: const Locale('en'),
       assetLoader: const CodegenLoader(),

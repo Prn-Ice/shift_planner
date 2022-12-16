@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "390752342931",
-    "project_id": "shift-planner-dev",
-    "storage_bucket": "shift-planner-dev.appspot.com"
+    "project_number": "522799908925",
+    "project_id": "dexter-shift-planner",
+    "storage_bucket": "dexter-shift-planner.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:390752342931:android:2e7dc7186f5b9c6de8ce66",
+        "mobilesdk_app_id": "1:522799908925:android:4667e55d3368e3ad9c8254",
         "android_client_info": {
-          "package_name": "com.dexter.health.shift.planner.dev"
+          "package_name": "com.dexter.health.shift.planner"
         }
       },
       "oauth_client": [
         {
-          "client_id": "390752342931-b1bant7pik43ovqvucj1m7ebisa4de3l.apps.googleusercontent.com",
+          "client_id": "522799908925-va77mfp865psq73vhr4vb7ogfp5dqa8r.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDkhsLFYMIsBYFyPT9clbtzoyK4v19fJtw"
+          "current_key": "AIzaSyD70Ke5wMVlMnIZ6oWRsBMN8VuquHque5o"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "390752342931-b1bant7pik43ovqvucj1m7ebisa4de3l.apps.googleusercontent.com",
+              "client_id": "522799908925-va77mfp865psq73vhr4vb7ogfp5dqa8r.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "522799908925-g05i7jocueegsma47lm0ea1ae0tdnmg9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dexter.health.shift.planner"
+              }
             }
           ]
         }

@@ -10,6 +10,21 @@ Help nurses keep notes
 
 ---
 
+> Note
+>
+> 1. To run the app you'll need to have [melos](https://pub.dev/packages/melos) installed. Once you have melos installed, run
+>
+> ```sh
+> melos bootstrap
+> ```
+>
+> Once thats done, you should be able to run the app using the commands below.
+>
+> 2. Some nice extras added
+>    - Auto dark theme
+>    - German translations
+>    - Swipe to edit and delete tasks
+
 ## Getting Started 🚀
 
 This project contains 3 flavors:

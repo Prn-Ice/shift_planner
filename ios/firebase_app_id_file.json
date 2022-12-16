@@ -1,7 +1,7 @@
 {
   "file_generated_by": "FlutterFire CLI",
   "purpose": "FirebaseAppID & ProjectID for this Firebase app in this directory",
-  "GOOGLE_APP_ID": "1:390752342931:ios:2441b5d503b83e67e8ce66",
-  "FIREBASE_PROJECT_ID": "shift-planner-dev",
-  "GCM_SENDER_ID": "390752342931"
+  "GOOGLE_APP_ID": "1:522799908925:ios:7d5ca27dafafee729c8254",
+  "FIREBASE_PROJECT_ID": "dexter-shift-planner",
+  "GCM_SENDER_ID": "522799908925"
 }

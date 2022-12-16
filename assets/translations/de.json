@@ -1,0 +1,36 @@
+{
+  "email": "Email",
+  "password": "Passwort",
+  "date": "Datum",
+  "time": "Zeit",
+  "counter": {
+    "appBarTitle": "Schalter"
+  },
+  "appName": "Schichtplaner",
+  "by": "Bereitgestellt von",
+  "register": {
+    "welcome": "Willkommen beim Schichtplaner",
+    "register": "Registrieren",
+    "loginInstead": "Anmeldung"
+  },
+  "login": {
+    "welcome": "Willkommen zurück",
+    "login": "Anmeldung",
+    "registerInstead": "Registrieren Sie sich stattdessen"
+  },
+  "dashboard": {
+    "today": "Heute",
+    "all": "Alles",
+    "completed": "Vollendet",
+    "title": "Titel",
+    "shift": "Schicht",
+    "addTask": "Aufgabe hinzufügen",
+    "addTaskSuccess": "Aufgabe erfolgreich hinzugefügt",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "deleteTask": "Aufgabe löschen",
+    "deleteConfirmation": "Möchten Sie die Aufgabe wirklich löschen?",
+    "cancel": "Stornieren",
+    "save": "Speichern"
+  }
+}

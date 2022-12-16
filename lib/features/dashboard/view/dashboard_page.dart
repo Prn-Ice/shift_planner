@@ -123,6 +123,7 @@ class _Drawer extends ConsumerWidget {
           ),
           ListTile(
             leading: const Icon(Icons.today),
+
             title: Text(LocaleKeys.dashboard_today.tr()),
             onTap: () => context
               ..navigateTo(const TodayRoute())

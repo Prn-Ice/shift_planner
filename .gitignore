@@ -125,3 +125,8 @@ app.*.map.json
 !.idea/codeStyles/
 !.idea/dictionaries/
 !.idea/runConfigurations/
+distribute_options.yaml
+android/app/google-services.json
+ios/firebase_app_id_file.json
+lib/firebase_options.dart
+dist/
