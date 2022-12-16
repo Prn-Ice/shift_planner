@@ -1,3 +1,7 @@
+## 0.1.1-dev.1
+
+ - **FIX**: working localization.
+
 ## 0.1.1-dev.0
 
  - **FIX**: minor errors.
