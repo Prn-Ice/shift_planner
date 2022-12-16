@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fpdart/fpdart.dart';
@@ -13,7 +15,9 @@ class TaskRepository implements ITaskRepository {
     required AuthenticationRepository authenticationRepository,
     FirebaseFirestore? firestore,
   })  : _firestore = firestore ?? FirebaseFirestore.instance,
-        _authenticationRepository = authenticationRepository;
+        _authenticationRepository = authenticationRepository {
+    _moveUncompleted();
+  }
 
   final FirebaseFirestore _firestore;
   final AuthenticationRepository _authenticationRepository;
@@ -119,5 +123,44 @@ class TaskRepository implements ITaskRepository {
       },
       (e, s) => 'Failed to delete task: $e',
     );
+  }
+
+  Future<void> _moveUncompleted() async {
+    try {
+      final current = await tasksOneShot;
+      final tasks = current?.tasks ?? [];
+      final unCompletedOld = tasks.where(
+        (element) {
+          final old = element.dueDate.dayMonthYear
+              .isBefore(DateTime.now().dayMonthYear);
+          final incomplete = !(element.isComplete ?? false);
+
+          return old && incomplete;
+        },
+      );
+      final renewed = unCompletedOld.map((e) {
+        return e.copyWith(dueDate: e.dueDate?.add(const Duration(days: 1)));
+      });
+
+      final newTasks = tasks.toList()
+        ..removeWhere(unCompletedOld.contains)
+        ..addAll(renewed);
+      final userId = _authenticationRepository.currentUser.id;
+      final request = NurseTasks(tasks: newTasks);
+
+      await _tasksRef.doc(userId).set(request);
+    } catch (e) {
+      log('Failed to move uncompleted task: $e');
+    }
+  }
+}
+
+extension on DateTime? {
+  DateTime get dayMonthYear {
+    try {
+      return DateTime(this!.year, this!.month, this!.day);
+    } catch (e) {
+      return DateTime.now();
+    }
   }
 }

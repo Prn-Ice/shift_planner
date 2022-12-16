@@ -22,30 +22,44 @@ class NewTaskCubit extends Cubit<NewTaskState> {
 
   void onTitleChanged(String value) {
     final title = GeneralInput.dirty(value);
-    final status = Formz.validate([title, state.date, state.time, state.shift]);
+    final status = Formz.validate([title, state.date, state.time]);
 
     emit(state.copyWith(title: title, status: status));
   }
 
   void onDateChanged(String value) {
     final date = GeneralInput.dirty(value);
-    final status = Formz.validate([state.title, date, state.time, state.shift]);
+    final status = Formz.validate([state.title, date, state.time]);
 
     emit(state.copyWith(date: date, status: status));
   }
 
   void onTimeChanged(String value) {
     final time = GeneralInput.dirty(value);
-    final status = Formz.validate([state.title, state.date, time, state.shift]);
+    final status = Formz.validate([state.title, state.date, time]);
 
     emit(state.copyWith(time: time, status: status));
+
+    final timeAsDateTime = DateTime.parse(state.time.value);
+    _onShiftChanged(timeAsDateTime);
   }
 
-  void onShiftChanged(String value) {
-    final shift = GeneralInput.dirty(value);
-    final status = Formz.validate([state.title, state.date, state.time, shift]);
+  void _onShiftChanged(DateTime time) {
+    final isMorningShift =
+        time.isAfter(DateTime(time.year, time.month, time.day, 6, 29)) &&
+            time.isBefore(DateTime(time.year, time.month, time.day, 14, 01));
 
-    emit(state.copyWith(shift: shift, status: status));
+    final isEveningShift =
+        time.isAfter(DateTime(time.year, time.month, time.day, 14)) &&
+            time.isBefore(DateTime(time.year, time.month, time.day, 21, 31));
+
+    if (isMorningShift) {
+      emit(state.copyWith(shift: Shift.morning));
+    } else if (isEveningShift) {
+      emit(state.copyWith(shift: Shift.evening));
+    } else {
+      emit(state.copyWith(shift: Shift.night));
+    }
   }
 
   Future<void> onCreateTask() async {
@@ -56,16 +70,14 @@ class NewTaskCubit extends Cubit<NewTaskState> {
       date.month,
       date.day,
       time.hour,
-      time.month,
+      time.minute,
     );
 
     final request = NurseTask(
       title: state.title.value,
       isComplete: false,
       dueDate: dateTime,
-      shift: Shift.values.firstWhere(
-        (element) => element.name == state.shift.value,
-      ),
+      shift: state.shift,
     );
 
     emit(state.copyWith(status: FormzStatus.submissionInProgress));

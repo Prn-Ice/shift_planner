@@ -3,26 +3,26 @@ part of 'new_task_cubit.dart';
 class NewTaskState extends Equatable {
   const NewTaskState({
     this.title = const GeneralInput.pure(),
-    this.shift = const GeneralInput.pure(),
     this.date = const GeneralInput.pure(),
     this.time = const GeneralInput.pure(),
     this.status = FormzStatus.pure,
     this.error = '',
+    this.shift,
   });
 
   final GeneralInput title;
-  final GeneralInput shift;
+  final Shift? shift;
   final GeneralInput date;
   final GeneralInput time;
   final FormzStatus status;
   final String error;
 
   @override
-  List<Object> get props => [title, shift, date, time, status, error];
+  List<Object?> get props => [title, shift, date, time, status, error];
 
   NewTaskState copyWith({
     GeneralInput? title,
-    GeneralInput? shift,
+    Shift? shift,
     GeneralInput? date,
     GeneralInput? time,
     FormzStatus? status,

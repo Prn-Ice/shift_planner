@@ -58,7 +58,7 @@ class _DateInputState extends State<TimeInput> {
       child: InputDecorator(
         isFocused: focusNode.hasFocus,
         decoration: const InputDecoration(
-          icon: Icon(Icons.date_range),
+          icon: Icon(Icons.punch_clock),
         ),
         child: Focus(
           focusNode: focusNode,

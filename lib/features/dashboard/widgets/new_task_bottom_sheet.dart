@@ -123,8 +123,7 @@ class _TimeInput extends ConsumerWidget {
       errorText: date.errorText,
       // ignore: prefer-extracting-callbacks
       onChanged: (value) {
-        ref.read(newTaskProvider.bloc).onDateChanged(value.toIso8601String);
-        FocusScope.of(context).nextFocus();
+        ref.read(newTaskProvider.bloc).onTimeChanged(value.toIso8601String);
       },
     );
   }
@@ -139,10 +138,8 @@ class _ShiftInput extends ConsumerWidget {
       newTaskProvider.select((value) => value.shift),
     );
 
-    return ShiftDropDown(
-      errorText: shift.errorText,
-      onChanged: (value) =>
-          ref.read(newTaskProvider.bloc).onShiftChanged(value?.name ?? ''),
+    return ShiftInput(
+      value: shift,
     );
   }
 }
